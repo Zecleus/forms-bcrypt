@@ -1,0 +1,121 @@
+<div class = "container">
+    <div class = "box1">
+        <mat-card class="login-page">
+            <mat-card-title>Job Profile</mat-card-title>
+            <mat-card-content>
+            <form
+                class="login-form data-form"
+                [formGroup] = "jobForm"
+                (ngSubmit)="onSubmit()"
+            >
+                <mat-form-field class = "box2">
+                    <input
+                        matInput
+                        type="text"
+                        name="companyName"
+                        formControlName = "companyName"
+                        placeholder="Company Name"
+                    />
+
+                    <mat-error *ngIf="companyName.errors?.required">
+                        The company name is required
+                    </mat-error>
+
+                    <mat-error *ngIf="companyName.errors?.minlength">
+                        The inputted company name needs to be at least 6 characters
+                        </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class = "box2">
+                    <input
+                        matInput
+                        type="text"
+                        name="positionName"
+                        formControlName = "positionName"
+                        placeholder="Position Name"
+                    />
+
+                    <mat-error *ngIf="positionName.errors?.required">
+                        The position name is required
+                    </mat-error>
+
+                    <mat-error *ngIf="positionName.errors?.minlength">
+                        The inputted position needs to be at least 6 characters
+                        </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class = "box2">
+                    <input
+                        matInput
+                        type="number"
+                        min = "0"
+                        name="salary"
+                        formControlName = "salary"
+                        placeholder="Salary"
+                    />
+
+                    <mat-error *ngIf="salary.errors?.required">
+                        Salary is required
+                    </mat-error>
+
+                    <mat-error *ngIf="salary.errors?.minlength">
+                        The inputted salary needs to be at least 3 characters
+                        </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class = "box2">
+                <input
+                    matInput
+                    type="text"
+                    name="cityAddress"
+                    formControlName = "cityAddress"
+                    placeholder="City Address"
+                />
+        
+                <mat-error *ngIf="cityAddress.errors?.required">
+                    The city address is required
+                </mat-error>
+
+                <mat-error *ngIf="cityAddress.errors?.minlength">
+                    The city address inputted is needs to be at least 6 characters
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class = "box2">
+                <input
+                    matInput
+                    type="number"
+                    min = "0"
+                    name="contactNumber"
+                    formControlName = "contactNumber"
+                    placeholder="Contact Number"
+                />
+                <mat-error *ngIf="contactNumber.errors?.required">
+                    The password field is required
+                </mat-error>
+        
+                <mat-error *ngIf="contactNumber.errors?.minlength">
+                    The password must be 6 characters
+                </mat-error>
+                </mat-form-field>
+        
+                <button mat-raised-button color="primary" [disabled]="!jobForm.valid">
+                Submit
+                </button>
+            </form>
+            </mat-card-content>
+        </mat-card>
+  </div>
+
+  <div class="box1">
+      <app-reactive-print
+      [companyName] = "toCompanyName"
+      [positionName] = "toPositionName"
+      [salary] = "toSalary"
+      [cityAddress] = "toCityAddress"
+      [contactNumber] = "toContactNumber"
+      *ngIf="check"
+      ></app-reactive-print>
+  </div>
+  
+</div>

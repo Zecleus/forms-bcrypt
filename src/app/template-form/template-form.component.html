@@ -1,0 +1,143 @@
+<div class = "container">
+    <div class = "box1">
+        <mat-card class="login-page">
+            <mat-card-title>User Profile</mat-card-title>
+            <mat-card-content>
+            <form
+                class="login-form data-form"
+                (ngSubmit)="onSubmit(loginForm)"
+                #loginForm="ngForm"
+            >
+                <mat-form-field class = "box2">
+                    <input
+                        matInput
+                        type="text"
+                        name="firstName"
+                        placeholder="First Name"
+                        required
+                        minlength="2"
+                        #firstName="ngModel"
+                        ngModel
+                    />
+
+                    <mat-error *ngIf="firstName.errors?.required">
+                        The first name is required
+                    </mat-error>
+
+                    <mat-error *ngIf="firstName.errors?.minlength">
+                        The inputted first name is too short
+                        </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class = "box2">
+                    <input
+                        matInput
+                        type="text"
+                        name="lastName"
+                        placeholder="Last Name"
+                        required
+                        minlength="2"
+                        #lastName="ngModel"
+                        ngModel
+                    />
+
+                    <mat-error *ngIf="lastName.errors?.required">
+                        The last name is required
+                    </mat-error>
+
+                    <mat-error *ngIf="lastName.errors?.minlength">
+                        The inputted last name is too short
+                        </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class = "box2">
+                    <input
+                        matInput
+                        type="number"
+                        name="age"
+                        placeholder="Age"
+                        required
+                        minlength="1"
+                        #age="ngModel"
+                        ngModel
+                    />
+
+                    <mat-error *ngIf="age.errors?.required">
+                        Age is required
+                    </mat-error>
+
+                    <mat-error *ngIf="age.errors?.number">
+                        The inputted values are not numbers
+                    </mat-error>
+
+                    <mat-error *ngIf="age.errors?.minlength">
+                        The inputted age is too short
+                        </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class = "box2">
+                <input
+                    matInput
+                    type="email"
+                    name="email"
+                    email
+                    placeholder="Email"
+                    required
+                    minlength="2"
+                    #email="ngModel"
+                    ngModel
+                />
+        
+                <mat-error *ngIf="email.errors?.required">
+                    The email is required
+                </mat-error>
+        
+                <mat-error *ngIf="email.errors?.email">
+                    The email is not valid
+                </mat-error>
+
+                <mat-error *ngIf="email.errors?.minlength">
+                    The email inputted is too short
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class = "box2">
+                <input
+                    matInput
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    minlength="6"
+                    #password="ngModel"
+                    ngModel
+                />
+                <mat-error *ngIf="password.errors?.required">
+                    The password field is required
+                </mat-error>
+        
+                <mat-error *ngIf="password.errors?.minlength">
+                    The password must be 6 characters
+                </mat-error>
+                </mat-form-field>
+        
+                <button mat-raised-button color="primary" [disabled]="!loginForm.valid">
+                Submit
+                </button>
+            </form>
+            </mat-card-content>
+        </mat-card>
+  </div>
+
+  <div class="box1">
+      <app-template-print
+      [firstName]="toFirstName"
+      [lastName]="toLastName"
+      [age]="toAge"
+      [email]="toEmail"
+      [password]="toPassword"
+      *ngIf="check"
+      ></app-template-print>
+  </div>
+  
+</div>
